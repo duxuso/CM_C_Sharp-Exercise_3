@@ -4,9 +4,15 @@ using Triangle;
 
 namespace TriangleTest
 {
+    /// <summary>
+    /// Test Class 'TriangleTests'
+    /// </summary>
     [TestClass]
     public class TriangleTests
     {
+        /// <summary>
+        /// The first test, calculate inputs as 3,4,5, should return 6
+        /// </summary>
         [TestMethod]
         public void Area_SampleResult()
         {
@@ -29,6 +35,9 @@ namespace TriangleTest
 
         }
 
+        /// <summary>
+        /// The second test, it contains a negative element, should throw exception
+        /// </summary>
         [TestMethod]
         public void InputIsLessThanZero_ShouldThrowInvalidTriangleException()
         {
@@ -54,11 +63,13 @@ namespace TriangleTest
             Assert.Fail("No exception was thrown.");
         }
 
+        /// <summary>
+        /// The third test, the inputs break the validation law, should throw exception
+        /// </summary>
         [TestMethod]
         public void InputsAreNotValid_ShouldThrowInvalidTriangleException()
         {
             // arrange
-
             int s_three = 1;
             int s_four = 2;
             int s_five = 3;

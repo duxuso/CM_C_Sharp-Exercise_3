@@ -6,32 +6,55 @@ using System.Threading.Tasks;
 
 namespace Triangle
 {
+    /// <summary>
+    /// Class 'TriangleArea'
+    /// </summary>
     public class TriangleArea
     {
-        // Messages to be used in tests
+        // Messages to be used in unit test
         public const string InputsIsEmptyMessage = ": Any inputs that are empty.";
         public const string InputIsLessThanZeroMessage = ": Any inputs that are negative.";
         public const string InputsAreNotValidMessage = ": Sum of any 2 sides is not greater than the other one.";
-
-        // Caculate triangle area by Heron's formula
+                
+        /// <summary>
+        /// Caculate triangle area by Heron's formula
+        ///    1. check if the inputs are available 
+        ///    2. calculate by Heron's formula
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
         public double Area(int a, int b, int c)
         {
             // Validate input integers
             CheckForInvalidTriangle(a,b,c);
 
+            // create local variables to accept integer arguments
             int x, y, z;
+
+            // p, s will be used in formula
             double p, s;
 
+            // assign value to local variables
             x = a;
             y = b;
             z = c;
 
+            // here's Heron's formula 
             p = (x + y + z) / 2;
             s = Math.Sqrt(p * (p - x) * (p - y) * (p - z));
+
+            // finally return the area
             return s;
         }
-
-        // check input integers, or throw exceptions
+                
+        /// <summary>
+        /// check input integers, or throw exceptions
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
         public void CheckForInvalidTriangle(int a, int b, int c)
         {
             // negative validation
@@ -43,8 +66,11 @@ namespace Triangle
                 throw new InvalidTriangleException(": Sum of any 2 sides is not greater than the other one.");
         }
 
-        static void Main(string[] args)
-        {
+        /// <summary>
+        /// Call method via Main()
+        /// </summary>
+        /// <param name="args"></param>
+        static void Main(string[] args){
             try
             {
                 // get user inputs, turn into integers
@@ -82,8 +108,10 @@ namespace Triangle
             }
         }
     }
-
-    // create InvalidTriangleException class for tests
+        
+    /// <summary>
+    /// create InvalidTriangleException class for tests
+    /// </summary>
     public class InvalidTriangleException : Exception
     {
         public InvalidTriangleException() : base("Inputs that cannot form a valid triangle") { }
